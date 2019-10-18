@@ -17,11 +17,24 @@ public class UnidaysDiscountChallenge{
 	
 	public static void main(String[] args) {
 		UnidaysDiscountChallenge challenge = new UnidaysDiscountChallenge();
-		Item a = new Item("A", 5.6);
-		Item b = new Item("E", 5.6);
+		
+		/*challenge.AddToBasket(new Item("A", 8.00));
+		challenge.AddToBasket(new Item("B", 12.00));
+		challenge.AddToBasket(new Item("C", 4.00));
+		challenge.AddToBasket(new Item("D", 7.00));
+		challenge.AddToBasket(new Item("E", 5.00));*/
+		
+		challenge.AddToBasket(new Item("E", 5.00));
+		challenge.AddToBasket(new Item("D", 7.00));
+		challenge.AddToBasket(new Item("C", 4.00));
+		challenge.AddToBasket(new Item("B", 12.00));
+		challenge.AddToBasket(new Item("A", 8.00));
+		challenge.AddToBasket(new Item("E", 5.00));
+		challenge.AddToBasket(new Item("D", 7.00));
+		challenge.AddToBasket(new Item("C", 4.00));
+		challenge.AddToBasket(new Item("B", 12.00));
+		challenge.AddToBasket(new Item("C", 4.00));
 
-		challenge.AddToBasket(a);
-		challenge.AddToBasket(b);
 		challenge.CalculateTotalPrice(challenge.getBasket());
 	}
 	
@@ -58,11 +71,12 @@ public class UnidaysDiscountChallenge{
 			}
 				
 		}
-		for (int i : itemAmounts) {
-			System.out.println(i);
-		}
-		
-		System.out.println(this.getDiscountPrice(6, 12.00, 2, 20.00));
+		totalPrice = totalPrice + (itemAmounts[0] * 8.00);
+		totalPrice = totalPrice + (getDiscountPrice(itemAmounts[1], Item.getPrice("B"), 2, 20.00));
+		totalPrice = totalPrice + (getDiscountPrice(itemAmounts[2], Item.getPrice("C"), 3, 10.00));
+		totalPrice = totalPrice + (getDiscountPrice(itemAmounts[3], Item.getPrice("D"), 2, 7.00));
+		totalPrice = totalPrice + (getDiscountPrice(itemAmounts[4], Item.getPrice("E"), 3, 10.00));
+		System.out.println(totalPrice);
 	}
 	
 	public double getDiscountPrice(int quantity, double indivPrice, int dealQuantity, double dealPrice) {
