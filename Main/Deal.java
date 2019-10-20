@@ -1,0 +1,21 @@
+package Main;
+
+public class Deal{
+	
+	private Item item;
+	private double itemPrice;
+	private int dealQuantity;
+	private double dealPrice;
+	
+	public Item getItem() {return item;}
+	public double getItemPrice() {return itemPrice;}
+	public int getDealQuantity() {return dealQuantity;}
+	public double getDealPrice() {return dealPrice;}
+
+	public Deal(Item i, double ip, int dq, double dp){
+		item = i;
+		itemPrice = ip;
+		dealQuantity = dq;
+		dealPrice = dp;
+	}
+}

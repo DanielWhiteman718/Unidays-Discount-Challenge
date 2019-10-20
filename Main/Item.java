@@ -1,45 +1,36 @@
 package Main;
 
+import java.util.ArrayList;
+
 public class Item{
 	
 	private String name;
-	private double price;
 	
-	public Item(String n, double p) {
-		name = n;
-		price = p;
-	}
-	
-	public void setName(String n) {
+	public Item(String n) {
 		name = n;
 	}
 	
-	public String getName(){
-		return name;
+	public void setName(String n){name = n;}	
+	public String getName(){return name;}	
+	
+	public static double getPrice(String name, ArrayList<Deal> pricings) {
+		return (Item.getDeal(name, pricings)).getItemPrice();
 	}
 	
-	public void setPrice(double p) {
-		price = p;
+	public static int getDealQuantity(String name, ArrayList<Deal> pricings) {
+		return (Item.getDeal(name, pricings)).getDealQuantity();
 	}
 	
-	public double getPrice(){
-		return price;
+	public static double getDealPrice(String name, ArrayList<Deal> pricings) {
+		return (Item.getDeal(name, pricings)).getDealPrice();
 	}
 	
-	public static double getPrice(String name) {
-		switch (name) {
-			case "A":
-				return 8.00;
-			case "B":
-				return 12.00;
-			case "C":
-				return 4.00;
-			case "D":
-				return 7.00;
-			case "E":
-				return 5.00;
-		    default:
-		    	return 0.0;
+	public static Deal getDeal(String name, ArrayList<Deal> pricings) {
+		for(Deal deal : pricings) {
+			if (deal.getItem().getName() == name) {
+				return deal;
+			}
 		}
+		return null;
 	}
 }

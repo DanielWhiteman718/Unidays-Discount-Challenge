@@ -4,51 +4,33 @@ import java.util.ArrayList;
 
 public class UnidaysDiscountChallenge{
 	
+	
 	private ArrayList<Item> basket;
 	private double totalPrice;
+	private ArrayList<Deal> pricingRules;
+	private double deliveryCost;
 	
-	public UnidaysDiscountChallenge(){
+	public UnidaysDiscountChallenge(ArrayList<Deal> pr){
 		basket = new ArrayList<Item>();
+		totalPrice = 0;
+		pricingRules = pr;
+		deliveryCost = 0;
 	}
 	
-	public ArrayList<Item> getBasket(){
-		return basket;
-	}
-	
-	public static void main(String[] args) {
-		UnidaysDiscountChallenge challenge = new UnidaysDiscountChallenge();
-		
-		/*challenge.AddToBasket(new Item("A", 8.00));
-		challenge.AddToBasket(new Item("B", 12.00));
-		challenge.AddToBasket(new Item("C", 4.00));
-		challenge.AddToBasket(new Item("D", 7.00));
-		challenge.AddToBasket(new Item("E", 5.00));*/
-		
-		challenge.AddToBasket(new Item("E", 5.00));
-		challenge.AddToBasket(new Item("D", 7.00));
-		challenge.AddToBasket(new Item("C", 4.00));
-		challenge.AddToBasket(new Item("B", 12.00));
-		challenge.AddToBasket(new Item("A", 8.00));
-		challenge.AddToBasket(new Item("E", 5.00));
-		challenge.AddToBasket(new Item("D", 7.00));
-		challenge.AddToBasket(new Item("C", 4.00));
-		challenge.AddToBasket(new Item("B", 12.00));
-		challenge.AddToBasket(new Item("C", 4.00));
-
-		challenge.CalculateTotalPrice(challenge.getBasket());
-	}
+	public ArrayList<Item> getBasket(){return basket;}
+	public double getTotalPrice() {return totalPrice;}
+	public ArrayList<Deal> getPricingRules(){return pricingRules;}
+	public double getDeliveryCost(){return deliveryCost;}
 	
 	public void AddToBasket(Item item) {
 		basket.add(item);
 	}
 	
-	public void CalculateTotalPrice(ArrayList<Item> basket) {
+	public void CalculateTotalPrice(ArrayList<Item> basket, ArrayList<Deal> pricingRules) {
 		int[] itemAmounts = {0,0,0,0,0};
 		
 		for(Item i : basket) {
-			
 			String name = i.getName();
-			
 			switch (name) {
 				case "A":
 					itemAmounts[0] = itemAmounts[0] + 1;
@@ -68,15 +50,27 @@ public class UnidaysDiscountChallenge{
 				default:
 					itemAmounts[0] = itemAmounts[0] + 1;
 					break;
-			}
-				
+			}		
 		}
-		totalPrice = totalPrice + (itemAmounts[0] * 8.00);
-		totalPrice = totalPrice + (getDiscountPrice(itemAmounts[1], Item.getPrice("B"), 2, 20.00));
-		totalPrice = totalPrice + (getDiscountPrice(itemAmounts[2], Item.getPrice("C"), 3, 10.00));
-		totalPrice = totalPrice + (getDiscountPrice(itemAmounts[3], Item.getPrice("D"), 2, 7.00));
-		totalPrice = totalPrice + (getDiscountPrice(itemAmounts[4], Item.getPrice("E"), 3, 10.00));
-		System.out.println(totalPrice);
+		
+		
+		totalPrice = totalPrice + (itemAmounts[0] * Item.getPrice("A", pricingRules)
+								+ (getDiscountPrice(itemAmounts[1], Item.getPrice("B", pricingRules), 
+								  Item.getDealQuantity("B", pricingRules), Item.getDealPrice("B", pricingRules)))
+								+ (getDiscountPrice(itemAmounts[2], Item.getPrice("C", pricingRules), 
+								  Item.getDealQuantity("C", pricingRules), Item.getDealPrice("C", pricingRules)))
+								+ (getDiscountPrice(itemAmounts[3], Item.getPrice("D", pricingRules), 
+								  Item.getDealQuantity("D", pricingRules), Item.getDealPrice("D", pricingRules)))
+								+ (getDiscountPrice(itemAmounts[4], Item.getPrice("E", pricingRules), 
+								  Item.getDealQuantity("E", pricingRules), Item.getDealPrice("E", pricingRules))));
+		System.out.println("Basket total £"+totalPrice);
+		
+		if (totalPrice > 49) {
+			deliveryCost = 0.00;
+		} else {
+			deliveryCost = 7.00;
+		}
+		System.out.println("Delivery cost £"+deliveryCost);
 	}
 	
 	public double getDiscountPrice(int quantity, double indivPrice, int dealQuantity, double dealPrice) {
@@ -87,18 +81,5 @@ public class UnidaysDiscountChallenge{
 		price = price + (notDiscountedAmount * indivPrice);
 		return price;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 }
