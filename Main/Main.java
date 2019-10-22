@@ -1,3 +1,12 @@
+/**
+* Main.java
+* 
+* Main class
+* 
+* @author Daniel Whiteman
+*
+*/
+
 package Main;
 
 import java.util.ArrayList;
