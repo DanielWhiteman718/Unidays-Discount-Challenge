@@ -7,8 +7,6 @@
 *
 */
 
-package Main;
-
 public class Deal{
 	
 	//Declaring instance variables

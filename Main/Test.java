@@ -7,11 +7,9 @@
 *
 */
 
-package Main;
-
 import java.util.ArrayList;
 
-public class Main{
+public class Test{
 	
 	public static void main(String[] args){
 		//Declares the pricingRules by building a list of Deals
