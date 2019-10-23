@@ -1,0 +1,2 @@
+- Compile the java files in the Main folder
+- Then run in command line
