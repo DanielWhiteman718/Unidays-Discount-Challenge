@@ -30,10 +30,16 @@ public class Test{
 		challenge.AddToBasket(new Item("B"));
 		challenge.AddToBasket(new Item("A"));
 		challenge.AddToBasket(new Item("E"));
+		//challenge.AddToBasket(new Item("E"));
+		//challenge.AddToBasket(new Item("E"));
 		challenge.AddToBasket(new Item("D"));
+		//challenge.AddToBasket(new Item("D"));
 		challenge.AddToBasket(new Item("C"));
 		challenge.AddToBasket(new Item("B"));
+		//challenge.AddToBasket(new Item("B"));
+		//challenge.AddToBasket(new Item("B"));
 		challenge.AddToBasket(new Item("C"));
+		//challenge.AddToBasket(new Item("C"));
 		challenge.CalculateTotalPrice(challenge.getBasket(), challenge.getPricingRules());
 		
 		System.out.println("Basket total £"+String.format("%.2f", challenge.getTotalPrice()));
