@@ -23,23 +23,18 @@ public class Test{
 		//Initiales the UnidaysDiscountChallenge class with the pricingRules
 		UnidaysDiscountChallenge challenge = new UnidaysDiscountChallenge(pricingRules);
 		
-		//Test case
+		/*Test case from the provided test plan.
+		 Feel free to test other cases yourself!*/
 		challenge.AddToBasket(new Item("E"));
 		challenge.AddToBasket(new Item("D"));
 		challenge.AddToBasket(new Item("C"));
 		challenge.AddToBasket(new Item("B"));
 		challenge.AddToBasket(new Item("A"));
 		challenge.AddToBasket(new Item("E"));
-		//challenge.AddToBasket(new Item("E"));
-		//challenge.AddToBasket(new Item("E"));
 		challenge.AddToBasket(new Item("D"));
-		//challenge.AddToBasket(new Item("D"));
 		challenge.AddToBasket(new Item("C"));
 		challenge.AddToBasket(new Item("B"));
-		//challenge.AddToBasket(new Item("B"));
-		//challenge.AddToBasket(new Item("B"));
 		challenge.AddToBasket(new Item("C"));
-		//challenge.AddToBasket(new Item("C"));
 		challenge.CalculateTotalPrice(challenge.getBasket(), challenge.getPricingRules());
 		
 		System.out.println("Basket total £"+String.format("%.2f", challenge.getTotalPrice()));
