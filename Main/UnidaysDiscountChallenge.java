@@ -129,7 +129,6 @@ public class UnidaysDiscountChallenge{
 								  Item.getDealQuantity("D", pricingRules), Item.getDealPrice("D", pricingRules)))
 								+ (getDiscountPrice(itemAmounts[4], Item.getPrice("E", pricingRules), 
 								  Item.getDealQuantity("E", pricingRules), Item.getDealPrice("E", pricingRules))));
-		System.out.println("Basket total £"+String.format("%.2f", totalPrice));
 		
 		//Calculates and prints the delivery cost
 		if (totalPrice > 49) {
@@ -137,10 +136,7 @@ public class UnidaysDiscountChallenge{
 		} else {
 			deliveryCost = 7.00;
 		}
-		System.out.println("Delivery cost £"+String.format("%.2f", deliveryCost));
 		
-		//Calculates and prints the total cost
-		System.out.println("Total cost £"+String.format("%.2f", (deliveryCost+totalPrice)));
 	}
 	
 	

@@ -37,5 +37,11 @@ public class Main{
 		challenge.AddToBasket(new Item("B"));
 		challenge.AddToBasket(new Item("C"));
 		challenge.CalculateTotalPrice(challenge.getBasket(), challenge.getPricingRules());
+		
+		System.out.println("Basket total £"+String.format("%.2f", challenge.getTotalPrice()));
+		System.out.println("Delivery cost £"+String.format("%.2f", challenge.getDeliveryCost()));
+		System.out.println("Total cost £"+String.format("%.2f", (challenge.getDeliveryCost()+challenge.getTotalPrice())));
+
+
 	}
 }
