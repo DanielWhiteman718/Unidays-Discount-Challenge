@@ -1,2 +1,2 @@
-- Compile the java files in the Main folder
-- Then run in command line
+- Compile/run the java files in the Main folder in command line using javac/java commands
+- Then run Test.java in command line to see a test case of the program
